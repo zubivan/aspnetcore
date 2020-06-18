@@ -325,6 +325,7 @@ export class BrowserRenderer {
   }
 
   private insertMarkup(batch: RenderBatch, parent: LogicalElement, childIndex: number, markupFrame: RenderTreeFrame) {
+    const timingRegion = TimingRegion.open('BrowserRenderer.insertMarkup');
     const markupContainer = createAndInsertLogicalContainer(parent, childIndex);
 
     const markupContent = batch.frameReader.markupContent(markupFrame);
@@ -333,6 +334,7 @@ export class BrowserRenderer {
     while (parsedMarkup.firstChild) {
       insertLogicalChild(parsedMarkup.firstChild, markupContainer, logicalSiblingIndex++);
     }
+    timingRegion.close();
   }
 
   private applyAttribute(batch: RenderBatch, componentId: number, toDomElement: Element, attributeFrame: RenderTreeFrame) {
