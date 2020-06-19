@@ -234,7 +234,9 @@ namespace Microsoft.AspNetCore.Components.RenderTree
                 // all in a single batch.
                 _isBatchInProgress = true;
 
+                var timingRegion = TimingRegion.Open($"{nameof(Renderer)}.{nameof(DispatchEventAsync)} - invoke callback");
                 task = callback.InvokeAsync(eventArgs);
+                timingRegion.Close();
             }
             catch (Exception e)
             {
@@ -402,6 +404,7 @@ namespace Microsoft.AspNetCore.Components.RenderTree
 
         private void ProcessRenderQueue()
         {
+            var timingRegion = TimingRegion.Open($"{nameof(Renderer)}.{nameof(ProcessRenderQueue)}");
             Dispatcher.AssertAccess();
 
             if (_isBatchInProgress)
@@ -444,6 +447,7 @@ namespace Microsoft.AspNetCore.Components.RenderTree
                 RemoveEventHandlerIds(_batchBuilder.DisposedEventHandlerIds.ToRange(), updateDisplayTask);
                 _batchBuilder.ClearStateForCurrentBatch();
                 _isBatchInProgress = false;
+                timingRegion.Close();
             }
 
             // An OnAfterRenderAsync callback might have queued more work synchronously.
