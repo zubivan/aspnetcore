@@ -36,8 +36,8 @@ namespace Microsoft.AspNetCore.Mvc.Abstractions
         public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintMetadata>? ActionConstraints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Microsoft.AspNetCore.Mvc.Routing.AttributeRouteInfo? AttributeRouteInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> BoundProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public virtual string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Collections.Generic.IList<object>? EndpointMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public virtual string? DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Collections.Generic.IList<object> EndpointMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Filters.FilterDescriptor> FilterDescriptors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public System.Collections.Generic.IList<Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor> Parameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
@@ -470,7 +470,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public bool TryApplyBindingInfo(Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata modelMetadata) { throw null; }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("Source: {DisplayName}")]
-    public partial class BindingSource : System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource>
+    public partial class BindingSource : System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource?>
     {
         public static readonly Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Body;
         public static readonly Microsoft.AspNetCore.Mvc.ModelBinding.BindingSource Custom;
@@ -625,7 +625,7 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding
         public void Add(string errorMessage) { }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerToString(),nq}")]
-    public abstract partial class ModelMetadata : Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider, System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata>
+    public abstract partial class ModelMetadata : Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider, System.IEquatable<Microsoft.AspNetCore.Mvc.ModelBinding.ModelMetadata?>
     {
         public static readonly int DefaultOrder;
         protected ModelMetadata(Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ModelMetadataIdentity identity) { }
