@@ -87,7 +87,10 @@ namespace Microsoft.AspNetCore.Components.Rendering
         public void AddMarkupContent(int sequence, string markupContent)
         {
             var timingRegion = TimingRegion.Impl.Open($"{nameof(RenderTreeBuilder)}.{nameof(AddMarkupContent)}");
-            Append(RenderTreeFrame.Markup(sequence, markupContent ?? string.Empty));
+            if (!string.IsNullOrWhiteSpace(markupContent))
+            {
+                Append(RenderTreeFrame.Markup(sequence, markupContent ?? string.Empty));
+            }
             TimingRegion.Impl.Close(timingRegion);
         }
 
@@ -99,7 +102,10 @@ namespace Microsoft.AspNetCore.Components.Rendering
         public void AddContent(int sequence, string textContent)
         {
             var timingRegion = TimingRegion.Impl.Open($"{nameof(RenderTreeBuilder)}.{nameof(AddContent)}(string)");
-            Append(RenderTreeFrame.Text(sequence, textContent ?? string.Empty));
+            if (!string.IsNullOrWhiteSpace(textContent))
+            {
+                Append(RenderTreeFrame.Text(sequence, textContent ?? string.Empty));
+            }
             TimingRegion.Impl.Close(timingRegion);
         }
 
